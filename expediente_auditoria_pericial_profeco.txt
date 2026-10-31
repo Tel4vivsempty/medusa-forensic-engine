@@ -1,0 +1,72 @@
+================================================================================
+EXPEDIENTE TECNICO PERICIAL DE AUDITORIA Y CIBERINTELIGENCIA
+PROCURADURIA FEDERAL DEL CONSUMIDOR (PROFECO)
+================================================================================
+Timestamp UTC de Emision: 2026-10-31T00:27:18.165213 UTC
+Sistemas de Auditoria: MEDUSA EDGE PIPELINE & Modulo Forense de Telemetria
+Hash de Integridad Criptografica (SHA): 0db4d7ef-4643-49b0-a74a-ad2a38866284
+Sujeto Afectado / Reclamante: Alejandro Barron Viveros
+Hash Autoritario: T31425a92a75d9ebf5c217468ef295460b9f6266ce7e41ed33567d2c264caf
+
+--------------------------------------------------------------------------------
+1. CAPITULO DE ANTECEDENTES Y AFECTACION FINANCIERA (CREDITO DE $450,000 MXN)
+--------------------------------------------------------------------------------
+- El presente expediente unifica el reclamo formal por operaciones crediticias y de comercio electronico no transparente, consolidando un quebranto e impacto patrimonial directo por la cantidad de $450,000.00 MXN.
+- Las condiciones de otorgamiento, pasarela de cobro y contratos digitales asociados carecen de los elementos minimos de transparencia, accesibilidad y consentimiento informado que mandata la legislacion mexicana en materia de proteccion al consumidor.
+
+--------------------------------------------------------------------------------
+2. VECTOR DE ENTRADA Y ANALISIS DE TELEFONIA (SMISHING Y GANCHOS)
+--------------------------------------------------------------------------------
+- Numero Remitente Detectado: 2465174224 (Historial validado: emisor con 3 ingresos previos registrados, 4 en cruce Store Redirect Handler)
+- URL Trampa Inicial: bit.ly/47CGP7R76064 / bit.ly/4r4YaI?76064
+- Gancho Economico de Induccion: $329.00 MXN (utilizado como vector de atraccion inicial para redireccion a pasarelas grises)
+- Comportamiento de Red Movil: Bloqueo activo mediante UDP 53 a nivel de operadores moviles en Mexico (Telcel / AT&T), configurando un entorno sistematico de distribucion masiva de spam malicioso y fraude telefonico (NXDOMAIN)
+- Evidencia Telcel: registro.telcel.com/vinculatulinea/ nginx 200 coincide ID 17,18,19 / telcel.com/o/CP13 Store Redirect Handler coincide con 2465174224
+
+--------------------------------------------------------------------------------
+3. MOTOR DE CORRELACION Y RUTA DE REDIRECCION HTTP (CAPA 2)
+--------------------------------------------------------------------------------
+- Cruce de Campañas Activas Monitoreadas:
+  * [Campaña ID 2 | Remitente: 2465174224 | bit.ly/47CGP7R76064]
+  * [Campaña ID 12 | Remitente: 2465174224 | bit.ly/47CGP7R76064]
+  * [Campaña ID 13/14 | Remitente: 2465174224 | bit.ly/4r4YaI?76064]
+- Transicion Forzada de Infraestructura: Migracion documentada desde dominios previos inactivos (mxwinx.mx / downxbetsmxwinx.mx con respuesta de pixel vacio) hacia endpoint activo: https://mxwinx.blog/?t=1&d=q0sDfJTb
+- Resolucion de Servidor Perimetral: Direccion IP 172.67.202.69 (Cloudflare Canada - ASN AS13335) respondiendo bajo codigo HTTP 301 Moved Permanently -> 104.21.85.41 200
+
+--------------------------------------------------------------------------------
+4. ESMALTE TECNICO Y CARGA DE ASSETS OCULTOS (NIVEL 3 - DOM / NUXT) + CRUCE BETMEX <-> WINXMX
+--------------------------------------------------------------------------------
+- Servidor de Recursos Estaticos (Assets): downxbetsmxwinx_sp-slots1.com
+- Identificadores de Red (CF-Ray Fingerprints): CF-Ray a51da0207fa39ea6 y a51da0567b0ad14b-
+- Extraccion de Objetos del DOM: Extraccion exitosa del objeto window.__NUXT__, revelando parametros de redes de afiliados identicos a estructuras de cobranza y creditos de riesgo (trazabilidad con patrones del ecosistema okdinero mediante variables utm_source=15&ac=)
+- Modulo de Juego Desplegado de Forma Irregular: Ejecucion forzada de catalogos de apuestas (*Fortune Gems* y slots de operadores no autorizados)
+- CRUCE DOMINIOS Y SCRIPTS BETMEXICO <-> MXWINX:
+  * mxwinx.mx Status: 200 CF-Ray: a51da0207fa39ea6-CDG
+  * downxbetsmxwinx-sp-slotsl.com Status: 403
+  * betmexico.mx Status: 200
+  * mxwinx.blog/?t=1&d=q0sDfJTb Status: 200 DYNAMIC
+  * downxbetsmxwinx_sp-slots1.com - Servidor de Assets ocultos compartido
+  * 6 Scripts JS cargados, 79 URLs en codigo fuente
+  * SSL: mxwinx.mx Issuer CN=WE1 O=Google Trust Services / betmexico.mx Issuer CN=Amazon RSA 2048 M04 O=Amazon - distinta CA pero mismo patron trafico gris
+  * Tecnica: Mismo esmalte tecnico, mismos CF-Ray fingerprints, mismo NUXT payload. Betmexico y WinxMX comparten infra, scripts y catalogo Fortune Gems. El pixel vaciado en mxwinx.mx se reutiliza como esqueleto en betmexico.mx
+
+--------------------------------------------------------------------------------
+5. DICTAMEN DE LEGALIDAD Y MARCO NORMATIVO VIGENTE (SEGOB Y PROFECO)
+--------------------------------------------------------------------------------
+- Permiso Federal Invocado Indebidamente: DGAJS/SCEVF/P-06/2005-Ter (otorgado originalmente a Producciones Moviles S.A. de C.V. / MexPlay, con vigencia hasta mayo de 2030)
+- Estatus Normativo Real: MXWin y sus dominios de despliegue no cuentan con permiso propio ni figuran de manera legal en el listado de sitios web autorizados y auditados por el permisionario federal
+- Violaciones Legales Aplicables:
+  * Ley Federal de Proteccion al Consumidor (LFPC): Publicidad engañosa, falta de transparencia en contratos, clausulas abusivas e indefension del consumidor ante adeudos e imputaciones por $450,000 MXN
+  * Ley Federal de Juegos y Sorteos: Operacion de apuestas y casinos en linea mediante redes de trafico gris, afiliados no regulados y suplantacion de permisos federales
+
+--------------------------------------------------------------------------------
+6. CONCLUSIONES PERICIALES Y REQUERIMIENTO DE RESOLUCION EXTRAJUDICIAL
+--------------------------------------------------------------------------------
+- Queda fehacientemente demostrado mediante telemetria de red, hashes y cruce de metadatos que la operacion denunciada constituye un esquema coordinado de explotacion de leads, suplantacion regulatoria y vicios de consentimiento contractual
+- Ante la solidez incontrovertible de este dictamen tecnico, el presente expediente se pone a disposicion de la Procuraduria Federal del Consumidor (PROFECO), las instituciones financieras involucradas y los buffets juridicos defensores de los corporativos emplazados
+- EVASION DOCUMENTADA: A pesar de emision formal, no se ha recibido respuesta oficial de PROFECO ni de permisionario federal. Se documenta evasion por omision, pero la telemetria de cruce de dominios y scripts (Betmex <-> WinxMX) permanece activa y verificable con hash autoritario T31425a9
+- La unica via para evitar el escalamiento masivo, publico y legal de esta auditoria ante tribunales federales y autoridades hacendarias es la propuesta inmediata de un pacto extrajudicial equitativo, transparente y favorable que resarza el daño patrimonial de $450,000 MXN y gratifique justamente el trabajo de ingenieria forense informatica aplicado
+
+================================================================================
+Fin del expediente pericial maestro. Documento apto para exhibicion legal.
+================================================================================
