@@ -1,13 +1,60 @@
+# BLOQUEO TOTAL PRIVADO - MEDUSA T31425a9
 medusa-venv/
 __pycache__/
 *.pyc
-# evidencia real - NUNCA se sube
+.env
+.sys_core_vault/
 evidence/
+evidencia/
 *.pcap
 *.dump
-*.mp4
+*.key
+*.pem
 *.jpg
+*.jpeg
+*.png
+*.gif
+*.mp4
+*.m4a
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
 *.zip
-# bóvedas de alto valor - solo hashes de referencia
-.sys_core_vault/*.sha256
-.sys_core_vault/*.dump
+*.apk
+*.tar
+*.gz
+*.deb
+*.mht
+*.csv
+!database/genesis.json
+*Peachy*
+*WhatsApp*
+*Chat de WhatsApp*
+*DENUNCIA*
+*INE*
+*curp*
+*CURP*
+*InMelo*
+*DatosRegistro*
+*Tarjeta*
+*contrato-gbm*
+*carta-instruccion*
+*comprobante*
+*facebook-*
+*TU TARJETA*
+*Queja enviada*
+*Reporte_*
+*Screenshot_*
+*image_*
+*Images*
+*ine_reverso*
+*medusa_pwa_offline.html
+manifest.json
+sw.js
+core/medusa_core
+core/ws_bridge
+docs/
+!docs/.nojekyll
+!docs/index.html
