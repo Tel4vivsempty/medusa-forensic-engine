@@ -1,0 +1,13 @@
+medusa-venv/
+__pycache__/
+*.pyc
+# evidencia real - NUNCA se sube
+evidence/
+*.pcap
+*.dump
+*.mp4
+*.jpg
+*.zip
+# bóvedas de alto valor - solo hashes de referencia
+.sys_core_vault/*.sha256
+.sys_core_vault/*.dump
