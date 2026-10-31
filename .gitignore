@@ -58,3 +58,5 @@ core/ws_bridge
 docs/
 !docs/.nojekyll
 !docs/index.html
+!docs/index.html
+!docs/privacy.html
