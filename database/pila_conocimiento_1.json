@@ -1,0 +1,107 @@
+{
+  "ficha_conocimiento": "pila_datos_medusa",
+  "version": "v5-correlacion-tiempo-real",
+  "author_hash_short": "T31425a9",
+  "author_hash_full": "T31425a92a75d9ebf5c217468ef295460b9f6266ce7e41ed33567d2c264caf",
+  "timestamp": "2026-10-31T00:19:17.995597",
+  "descripcion": "Ficha de conocimiento de la pila de datos para correlacionar si alguien en el mundo audita en este momento",
+  "pila_datos": {
+    "personas_morales_oficiales": [
+      {
+        "nombre": "BBVA",
+        "senders_oficiales": [
+          "BBVA",
+          "BBVA MX",
+          "22123"
+        ],
+        "dominios_oficiales": [
+          "bbva.mx",
+          "bbva.com",
+          "bbva.com.mx"
+        ],
+        "canal_oficial": "app BBVA"
+      },
+      {
+        "nombre": "Santander",
+        "senders_oficiales": [
+          "Santander",
+          "SantanderMx"
+        ],
+        "dominios_oficiales": [
+          "santander.com.mx",
+          "santander.com"
+        ],
+        "canal_oficial": "app Santander"
+      },
+      {
+        "nombre": "Banamex",
+        "senders_oficiales": [
+          "Banamex",
+          "Citibanamex"
+        ],
+        "dominios_oficiales": [
+          "banamex.com",
+          "citibanamex.com"
+        ],
+        "canal_oficial": "app Citibanamex"
+      },
+      {
+        "nombre": "HSBC",
+        "senders_oficiales": [
+          "HSBC",
+          "HSBC MX"
+        ],
+        "dominios_oficiales": [
+          "hsbc.com.mx",
+          "hsbc.com"
+        ],
+        "canal_oficial": "app HSBC"
+      },
+      {
+        "nombre": "SPEI",
+        "senders_oficiales": [
+          "SPEI - No envia SMS con links bit.ly"
+        ],
+        "dominios_oficiales": [
+          "banxico.org.mx - SPEI no usa bit.ly"
+        ],
+        "canal_oficial": "Tu banco, no SPEI directo",
+        "caso_genesis_ref": "GEN-SPEI-2026-10-28-001"
+      }
+    ],
+    "patrones_smishing_mundo": [
+      {
+        "patron": "LINK_SIN_HTTP",
+        "ejemplo": "bit.ly/bbva-seguro",
+        "riesgo": 3
+      },
+      {
+        "patron": "DOMINIO_TYPO",
+        "ejemplo": "bbva-seguro-mx.top",
+        "riesgo": 4
+      },
+      {
+        "patron": "SENDER_CORTO_NUMERICO",
+        "ejemplo": "22123 spoofeado",
+        "riesgo": 2
+      },
+      {
+        "patron": "URGENCIA",
+        "ejemplo": "Tu cuenta bloqueada verifica ya",
+        "riesgo": 1
+      },
+      {
+        "patron": "SPEI_COMPENSACION_329MXN",
+        "ejemplo": "https://bit.ly/47CGP7R?6064 -> mxwinx.blog/?t=1&d=q0sDfJTb",
+        "infra": "104.21.85.41 Cloudflare AS13335 Canada nginx 301",
+        "riesgo": 4,
+        "tecnica": "Usa últimos 4 dígitos de cuenta como parametro ?6064 para tracking"
+      }
+    ],
+    "genesis_ref": "database/genesis.json -> GENESIS_BLOCK sellado con T31425a9"
+  },
+  "correlacion_tiempo_real": {
+    "si_alguien_audita_ahora": "Cuando llegue un POST a /api/audit/sms con sender+content, el sistema: 1) extrae links aunque no tengan http/https, 2) compara sender contra personas_morales_oficiales, 3) compara dominio contra dominios_oficiales (typosquat), 4) calcula riesgo con pila_datos, 5) sella en .sys_core_vault con hash autoritario y timestamp UTC",
+    "para_el_mundo": "Cualquier persona en el mundo puede auditar con solo 2 datos y su evento queda correlacionado con tu genesis y tu hash autoritario"
+  }
+}

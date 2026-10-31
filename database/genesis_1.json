@@ -1,0 +1,76 @@
+{
+  "genesis": true,
+  "author_hash_short": "T31425a9",
+  "author_hash_full": "T31425a92a75d9ebf5c217468ef295460b9f6266ce7e41ed33567d2c264caf",
+  "timestamp": "2026-10-31T00:21:22.462074",
+  "auditor": "Tel4vivsempty - Pachuca",
+  "descripcion": "Datos genesis auditados por mi - caso SPEI $329 MXN bit.ly -> mxwinx.blog - bloque 0 sellado con hash autoritario",
+  "casos_auditados": [
+    {
+      "id": "GEN-SPEI-2026-10-28-001",
+      "persona_moral_falsificada": "SPEI",
+      "sender_real": "2465174224",
+      "sender_registrado_como": "246 517 4224 - Tlaxcala",
+      "contenido_sms": "SPEI: Pedimos disculpas por la demora. Abonamos $329.00 MXN a 7711256064 como compensacion. Retira o juega ahora. https://bit.ly/47CGP7R?6064",
+      "url_acortada": "https://bit.ly/47CGP7R?6064",
+      "parametro_tracking": "?6064 coincide con últimos 4 dígitos de cuenta 7711256064",
+      "cadena_redireccion": {
+        "eslabon_1_dns": {
+          "host_final": "mxwinx.blog",
+          "ip": "104.21.85.41",
+          "asn": "AS13335 Cloudflare",
+          "pais": "Canada"
+        },
+        "eslabon_2_301": {
+          "codigo": 301,
+          "server": "nginx",
+          "location": "https://mxwinx.blog/?t=1&d=q0sDfJTb"
+        },
+        "eslabon_3_infra": {
+          "url_final": "https://mxwinx.blog/?t=1&d=q0sDfJTb",
+          "status": 200,
+          "server": "cloudflare",
+          "titulo": "Mejores juegos en linea , Juegos y apuestas mxwinx.mx"
+        }
+      },
+      "heuristica_confirmada": [
+        "URL_ACORTADA_DETECTADA",
+        "ENDPOINT_DESTINO_ACTIVO",
+        "PATRON_SMS_PHISHING_CONFIRMADO",
+        "LINK_SIN_HTTP_HTTPS_DETECTADO_EN_FICHA",
+        "PARAMETRO_TRACKING_SOSPECHOSO"
+      ],
+      "telemetria_parser_cpp": {
+        "source_number": "2465174224",
+        "extracted_url": "https://bit.ly/47CGP7R?6064",
+        "is_shortened": true,
+        "raw_payload": "SPEI: Pedimos disculpas por la demora. Abonamos $329.00 MXN como compensacion. Retira o juega ahora. https://bit.ly/47CGP7R?6064",
+        "timestamp": "2026-10-28 21:56:48"
+      },
+      "analisis_js": {
+        "scripts_cargados": 6,
+        "dominios_relacionados": [
+          "downxbetsmxwinx-sp-slots.com"
+        ],
+        "urls_en_codigo": 79,
+        "preview_html": "<title>Mejores juegos en línea , Juegos y apuestas mxwinx.mx</title>"
+      },
+      "infra_tor_mitm": {
+        "tor_bootstrap": "100% Done - circuit established",
+        "curl_via_tor": "socks5://127.0.0.1:9050 -> mxwinx.mx -> cf-cache-status DYNAMIC",
+        "mitmproxy_intento": "mode upstream socks5://127.0.0.1:9050 -p 8082 (Invalid server scheme corregido a socks5h)",
+        "torrc": "ControlPort 9051 + CookieAuthentication 1 + ExitPolicy"
+      },
+      "veredicto": "SMISHING_PROBABLE - NO RESPONDER - Campaña de phishing que usa SPEI como gancho y redirige a sitio de apuestas para robo de datos / afiliado",
+      "fecha_auditoria": "2026-10-28",
+      "author_hash": "T31425a92a75d9ebf5c217468ef295460b9f6266ce7e41ed33567d2c264caf"
+    }
+  ],
+  "heuristica_aplicada": [
+    "LINK_SIN_HTTP_HTTPS",
+    "LINK_ACORTADO",
+    "SENDER_CORTO",
+    "KEYWORD_URGENCIA"
+  ],
+  "sellado": "Se sellara con SHA256 + hash autoritario"
+}

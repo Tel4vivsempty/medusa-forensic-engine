@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Medusa Forensic Engine - N3</title>
+<style>body{font-family:monospace;background:#0a0a0a;color:#00ff88;padding:20px} .card{border:1px solid #00ff88;padding:12px;margin:10px 0} pre{white-space:pre-wrap;word-break:break-word} input,textarea{width:100%;background:#111;color:#0f8;border:1px solid #0f8;padding:8px} button{background:#00ff88;color:#000;padding:8px 16px;border:none;cursor:pointer;margin-top:8px} .risk-high{color:#ff4444} .risk-med{color:#ffaa00} .risk-low{color:#00ff88}</style>
+</head><body>
+<h1>MEDUSA FORENSIC ENGINE - Pipeline N3</h1>
+
+<div class="card">
+<h3>🛡️ Etapa 1 - Detecta Smishing en 2 datos (Para cualquier persona)</h3>
+<p>Pega solo: 1) Número o nombre como lo tienes guardado de la persona moral que te mandó SMS y 2) Contenido del mensaje. Detecta enlaces aunque no tengan HTTP/HTTPS.</p>
+<label>1. Número / Nombre como lo tienes registrado (ej: BBVA, 22123, +52 55 1234):</label>
+<input id="sms_sender" placeholder="Ej: BBVA o 5551234567 o BANCO-Alert">
+<label>2. Contenido del SMS (pega completo):</label>
+<textarea id="sms_content" rows="6" placeholder="Ej: BBVA: Tu cuenta ha sido bloqueada, verifica en bit.ly/bbva-seguro o en www.bbva-seguro.com/login"></textarea>
+<button onclick="auditSMS()">Verificar y Sellar Auditoría</button>
+<pre id="sms_out"></pre>
+</div>
+
+<div class="card"><h3>Stockdata Backend</h3><pre id="stock"></pre></div>
+<div class="card"><h3>Auditoria de Cabeceras Avanzada</h3><textarea id="headers" rows="4">GET / HTTP/1.1
+Host: target.com
+X-N3: directed
+Via: Tor 0.4.8
+User-Agent: 68k-BasiliskII</textarea><button onclick="audit()">Auditar Cabeceras</button><pre id="audit_out"></pre></div>
+<div class="card"><h3>Vault SHA-256 (HASH AUTORITARIO INTELECTUAL)</h3><p>Author: T31425a9 | Full: T31425a92a75d9ebf5c217468ef295460b9f6266ce7e41ed33567d2c264caf</p><pre id="vault"></pre></div>
+<div class="card"><h3>Flujos Tor Emitidos - Auditoria</h3><p>Los flujos se sellan con HASH AUTORITARIO INTELECTUAL T31425a92a75d9ebf5c217468ef295460b9f6266ce7e41ed33567d2c264caf para cadena de custodia. No se emite trafico sin sello.</p></div>
+
+<script>
+function refresh(){
+  fetch('/api/stockdata').then(r=>r.json()).then(j=>document.getElementById('stock').textContent=JSON.stringify(j,null,2));
+  fetch('/api/evidence').then(r=>r.json()).then(j=>document.getElementById('vault').textContent=j.join("\n"));
+}
+refresh();
+function audit(){ fetch('/api/internal/audit',{method:'POST',headers:{'Content-Type':'application/json','X-Medusa-Auth':'T31425a9'},body:JSON.stringify({headers:document.getElementById('headers').value})}).then(r=>r.json()).then(j=>document.getElementById('audit_out').textContent=JSON.stringify(j,null,2)); }
+
+function auditSMS(){
+  const sender=document.getElementById('sms_sender').value;
+  const content=document.getElementById('sms_content').value;
+  if(!sender||!content){ alert('Pon los 2 datos'); return; }
+  document.getElementById('sms_out').textContent='Auditando y sellando con T31425a9...';
+  fetch('/api/audit/sms',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sender,content})})
+  .then(r=>r.json()).then(j=>{
+    let cls='risk-low';
+    if(j.risk_score>=6) cls='risk-high';
+    else if(j.risk_score>=3) cls='risk-med';
+    let txt = `VEREDICTO: ${j.veredicto}\nRIESGO: ${j.risk_score}\nRECOMENDACION: ${j.recomendacion}\n\nLINKS DETECTADOS (${j.links_detectados.length}):\n${j.links_detectados.join('\n')}\n\nHALLAZGOS:\n${j.findings.join('\n')}\n\nVAULT HASH SELLADO: ${j.vault_hash}\nHASH AUTORITARIO: ${j.full_hash}`;
+    document.getElementById('sms_out').innerHTML=`<span class="${cls}">${txt}</span>`;
+    refresh();
+  });
+}
+</script>
+</body></html>

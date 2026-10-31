@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Medusa Forensic Engine - N3</title>
+<style>body{font-family:monospace;background:#0a0a0a;color:#00ff88;padding:20px} .card{border:1px solid #00ff88;padding:12px;margin:10px 0} pre{white-space:pre-wrap}</style>
+</head><body>
+<h1>MEDUSA FORENSIC ENGINE - Pipeline N3</h1>
+<div class="card"><h3>Stockdata Backend</h3><pre id="stock"></pre></div>
+<div class="card"><h3>Auditoria de Cabeceras</h3><textarea id="headers" rows="5" style="width:100%">GET / HTTP/1.1
+Host: target.com
+X-N3: directed
+Via: Tor 0.4.8
+User-Agent: 68k-BasiliskII</textarea><button onclick="audit()">Auditar</button><pre id="audit_out"></pre></div>
+<div class="card"><h3>Vault SHA-256 (HASH AUTORITARIO INTELECTUAL)</h3><p>Author: T31425a9 | Full: T31425a92a75d9ebf5c217468ef295460b9f6266ce7e41ed33567d2c264caf</p><pre id="vault"></pre></div>
+<div class="card"><h3>Flujos Tor Emitidos - Auditoria</h3><p>Los flujos se sellan con HASH AUTORITARIO INTELECTUAL T31425a92a75d9ebf5c217468ef295460b9f6266ce7e41ed33567d2c264caf para cadena de custodia. No se emite trafico sin sello.</p></div>
+<script>
+fetch('/api/stockdata').then(r=>r.json()).then(j=>document.getElementById('stock').textContent=JSON.stringify(j,null,2));
+fetch('/api/evidence').then(r=>r.json()).then(j=>document.getElementById('vault').textContent=j.join("\n"));
+function audit(){ fetch('/api/internal/audit',{method:'POST',headers:{'Content-Type':'application/json','X-Medusa-Auth':'T31425a9'},body:JSON.stringify({headers:document.getElementById('headers').value})}).then(r=>r.json()).then(j=>document.getElementById('audit_out').textContent=JSON.stringify(j,null,2)); }
+</script>
+</body></html>

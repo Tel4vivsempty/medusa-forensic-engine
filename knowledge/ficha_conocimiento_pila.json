@@ -85,33 +85,5 @@
   "correlacion_tiempo_real": {
     "si_alguien_audita_ahora": "Cuando llegue un POST a /api/audit/sms con sender+content, el sistema: 1) extrae links aunque no tengan http/https, 2) compara sender contra personas_morales_oficiales, 3) compara dominio contra dominios_oficiales (typosquat), 4) calcula riesgo con pila_datos, 5) sella en .sys_core_vault con hash autoritario y timestamp UTC",
     "para_el_mundo": "Cualquier persona en el mundo puede auditar con solo 2 datos y su evento queda correlacionado con tu genesis y tu hash autoritario"
-  },
-  "afectacion_450k": {
-    "credito": 450000.0,
-    "moneda": "MXN",
-    "descripcion": "El presente expediente unifica el reclamo formal por operaciones crediticias y de comercio electronico no transparente, consolidando un quebranto e impacto patrimonial directo por la cantidad de $450,000.00 MXN",
-    "condiciones_otorgamiento": "Las condiciones de otorgamiento, pasarela de cobro y contratos digitales asociados carecen de los elementos minimos de transparencia, accesibilidad y consentimiento informado que mandata la legislacion mexicana en materia de proteccion al consumidor"
-  },
-  "cruce_betmex_winxmx": {
-    "dominios": [
-      "mxwinx.mx Status: 200 CF-Ray: a51da0207fa39ea6-CDG",
-      "downxbetsmxwinx-sp-slotsl.com Status: 403",
-      "betmexico.mx Status: 200",
-      "mxwinx.blog/?t=1&d=q0sDfJTb Status: 200 DYNAMIC",
-      "downxbetsmxwinx_sp-slots1.com - Servidor de Assets ocultos"
-    ],
-    "tecnica": "Mismo esmalte tecnico, mismos CF-Ray fingerprints, mismo NUXT payload. Betmexico y WinxMX comparten infra, scripts y catalogo Fortune Gems. El pixel vaciado en mxwinx.mx se reutiliza como esqueleto en betmexico.mx",
-    "ssl": [
-      "mxwinx.mx -> Issuer: CN=WE1,O=Google Trust Services,C=US",
-      "betmexico.mx -> Issuer: CN=Amazon RSA 2048 M04,O=Amazon,C=US - distinta CA pero mismo patron de trafico gris"
-    ],
-    "scripts_cruzados": 6,
-    "urls_en_codigo": 79
-  },
-  "emision_profeco_evasion": {
-    "demostracion": "Queda fehacientemente demostrado mediante telemetria de red, hashes y cruce de metadatos que la operacion denunciada constituye un esquema coordinado de explotacion de leads, suplantacion regulatoria y vicios de consentimiento contractual",
-    "emision_profeco": "Expediente emitido a Procuraduria Federal del Consumidor (PROFECO), instituciones financieras involucradas y buffets juridicos defensores de los corporativos emplazados",
-    "evasion_por_no_respuesta": "A pesar de emision formal, no se ha recibido respuesta oficial de PROFECO ni de permisionario federal. Se documenta evasion por omision, pero la telemetria de cruce de dominios y scripts (Betmex <-> WinxMX) permanece activa y verificable. La falta de respuesta no invalida la prueba tecnica sellada con hash autoritario",
-    "requerimiento": "La unica via para evitar el escalamiento masivo, publico y legal de esta auditoria ante tribunales federales y autoridades hacendarias es la propuesta inmediata de un pacto extrajudicial equitativo, transparente y favorable que resarza el daño patrimonial de $450,000 MXN y gratifique justamente el trabajo de ingenieria forense informatica aplicado"
   }
 }
