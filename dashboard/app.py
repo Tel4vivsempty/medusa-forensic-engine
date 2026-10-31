@@ -33,5 +33,20 @@ def evidence():
     files=glob.glob("../.sys_core_vault/*.sha256")
     return jsonify([pathlib.Path(f).read_text()[:200] for f in files[-20:]])
 
+
+@app.route("/api/audit/sms", methods=["POST"])
+def audit_sms():
+    data = request.json or {}
+    sender = data.get("sender","").strip()
+    content = data.get("content","").strip()
+    if not sender or not content:
+        return jsonify({"error":"Falta sender y content"}), 400
+    # importa detector
+    import sys
+    sys.path.append("../scripts")
+    from smishing_detector import audit_sms as do_audit
+    result = do_audit(sender, content)
+    return jsonify(result)
+
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=5000,debug=True)
