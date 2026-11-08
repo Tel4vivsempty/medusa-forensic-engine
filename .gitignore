@@ -60,3 +60,9 @@ docs/
 !docs/index.html
 !docs/index.html
 !docs/privacy.html
+# MEDUSA - Lo privado NUNCA sube
+expediente_*.txt
+.sys_core_vault/
+*.txt
+!README.md
+!requirements.txt
